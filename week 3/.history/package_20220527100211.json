@@ -12,7 +12,7 @@
   "engines": {
     "node": "18.1.0",
     "npm": "8.8.0",
-    "yarn": "1.22.18"
+    "yarn": ""
   },
   "dependencies": {
     "cookie-parser": "^1.4.6",
