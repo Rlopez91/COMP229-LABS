@@ -3,16 +3,17 @@ import express from 'express';
 import User from '../Models/user';
 import passport from 'passport';
 import { request } from 'http';
+import { UserDisplayName } from '../Util';
 
 //display functions
 export function DisplayLoginPage(req: express.Request, res: express.Response, next: express.NextFunction)
 {
-    res.render('index', {title: 'Login', page: 'login', messages: req.flash('loginMessage'), displayName:''});
+    res.render('index', {title: 'Login', page: 'login', messages: req.flash('loginMessage'), displayName: UserDisplayName(req)});
 }
 
 export function DisplayRegisterPage(req: express.Request, res: express.Response, next: express.NextFunction) 
 {
-    res.render('index', {title: 'Register', page: 'register', messages: req.flash('registerMessage'), displayName:''});
+    res.render('index', {title: 'Register', page: 'register', messages: req.flash('registerMessage'), displayName:UserDisplayName(req)});
 }
 
 //processing functions
