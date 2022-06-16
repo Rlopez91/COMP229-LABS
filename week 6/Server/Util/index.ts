@@ -1,6 +1,6 @@
 import express from 'express';
 
-//convenience function to return the display name of the user
+// convenience function to return the DisplayName of the User
 export function UserDisplayName(req: express.Request): string
 {
     if(req.user)
@@ -11,10 +11,9 @@ export function UserDisplayName(req: express.Request): string
     return '';
 }
 
-//helper function for guarding secure locations
-export function AuthGuard(req: express.Request, res: express.Response, next: express.NextFunction)
+// helper middleware function for guarding secure locations
+export function AuthGuard(req: express.Request, res: express.Response, next: express.NextFunction): void
 {
-    //if im not authenticated - redirect to login, otherwise next() keep going
     if(!req.isAuthenticated())
     {
         return res.redirect('/login');

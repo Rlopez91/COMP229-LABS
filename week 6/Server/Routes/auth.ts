@@ -11,13 +11,13 @@ router.get('/login', DisplayLoginPage);
 router.get('/register', DisplayRegisterPage);
 
 /* process login. */
-router.get('/login', ProcessLoginPage);
+router.post('/login', ProcessLoginPage);
 
 /* process register. */
-router.get('/register', ProcessRegisterPage);
+router.post('/register', ProcessRegisterPage);
 
 /* Process logout. */
-router.get('/contact', ProcessLogoutPage);
+router.get('/logout', ProcessLogoutPage);
 
 /* TEMPORARY SECTION */
 

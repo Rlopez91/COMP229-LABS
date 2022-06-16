@@ -4,8 +4,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ProcessLogoutPage = exports.ProcessRegisterPage = exports.ProcessLoginPage = exports.DisplayRegisterPage = exports.DisplayLoginPage = void 0;
-const user_1 = __importDefault(require("../Models/user"));
 const passport_1 = __importDefault(require("passport"));
+const user_1 = __importDefault(require("../Models/user"));
 const Util_1 = require("../Util");
 function DisplayLoginPage(req, res, next) {
     if (!req.user) {
@@ -28,7 +28,7 @@ function ProcessLoginPage(req, res, next) {
             res.end(err);
         }
         if (!user) {
-            req.flash('loginMessage', 'Authentication Error');
+            req.flash('loginMessage', 'Authentication Error!');
             return res.redirect('/login');
         }
         req.logIn(user, function (err) {
@@ -50,8 +50,8 @@ function ProcessRegisterPage(req, res, next) {
     user_1.default.register(newUser, req.body.password, function (err) {
         if (err) {
             if (err.name == "UserExistsError") {
-                console.error('Error: User already exists');
-                req.flash('registerMessage', 'Registration Error');
+                console.error('ERROR: User Already Exists!');
+                req.flash('registerMessage', 'Registration Error!');
             }
             else {
                 console.error(err.name);
@@ -60,7 +60,7 @@ function ProcessRegisterPage(req, res, next) {
             return res.redirect('/register');
         }
         return passport_1.default.authenticate('local')(req, res, function () {
-            return res.redirect('movie-list');
+            return res.redirect('/movie-list');
         });
     });
 }
@@ -71,7 +71,7 @@ function ProcessLogoutPage(req, res, next) {
             console.error(err);
             res.end(err);
         }
-        console.log("user logged out");
+        console.log("User Logged Out");
     });
     res.redirect('/login');
 }
