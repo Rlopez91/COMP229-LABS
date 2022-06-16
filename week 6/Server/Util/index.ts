@@ -14,7 +14,8 @@ export function UserDisplayName(req: express.Request): string
 //helper function for guarding secure locations
 export function AuthGuard(req: express.Request, res: express.Response, next: express.NextFunction)
 {
-    if(!req.isAuthenticated)
+    //if im not authenticated - redirect to login, otherwise next() keep going
+    if(!req.isAuthenticated())
     {
         return res.redirect('/login');
     }
